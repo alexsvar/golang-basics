@@ -1,0 +1,22 @@
+GO THEORY
+
+//
+// // PACKAGES
+// 
+
+package main
+
+import "fmt"
+
+func main() {
+	fmt.Printf("Привет")
+}
+
+// Виды пакетов:
+// main - точка входа в приложение.
+// services/... - наши собственные модули приложения.
+// fmt - стандартный пакет библиотеки Go.
+// github.com/gabriel-vasile/mimetype - внешний пакет.
+
+// Запуск в консоли:
+// go run main.go
