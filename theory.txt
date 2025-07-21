@@ -4,7 +4,7 @@ GO THEORY
 // MODULES
 // VARIABLES & VALUES
 // TYPES
-//
+// CONSTANTS
 //
 //
 //
@@ -101,6 +101,28 @@ func main() {
 	userHeight float64 := 1.8
 	var userWeight = 100
 	var bmi = float64(userWeight) / math.Pow(userHeight, 2)
+	fmt.Print(bmi)
+}
+///////
+
+
+// 
+// // CONSTANTS
+// 
+
+///////
+package main
+
+import (
+	"fmt"
+	"math"
+)
+
+func main() {
+	const bmiPower = 2
+	userHeight := 1.8
+	userWeight := 100.0
+	bmi := userWeight / math.Pow(userHeight, bmiPower)
 	fmt.Print(bmi)
 }
 ///////
