@@ -2,6 +2,12 @@ GO THEORY
 
 // PACKAGES
 // MODULES
+// VARIABLES & VALUES
+//
+//
+//
+//
+//
 //
 //
 //
@@ -33,7 +39,6 @@ func main() {
 >  go run main.go
 
 
-
 // 
 // // MODULES
 // 
@@ -58,4 +63,19 @@ func main() {
 module demo/app-1
  
 go 1.24.5
+///////
+
+
+// 
+// // VARIABLES & VALUES
+// 
+
+///////
+package main
+
+func main() {
+	var userHeight float64 = 1.8
+	var userWeight int = 100
+	var bmi int = userWeight / int(userHeight)^2
+}
 ///////
