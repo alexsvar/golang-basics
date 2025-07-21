@@ -6,7 +6,7 @@ GO THEORY
 // TYPES
 // CONSTANTS
 // INPUT & OUTPUT STRINGS
-//
+// STRINGS FORMATTING
 //
 //
 //
@@ -154,3 +154,14 @@ func main() {
 	fmt.Print(bmi)
 }
 ///////
+
+// 
+// // STRINGS FORMATTING
+// 
+
+// fmt.Print() - позволяет вывести строку.
+
+// fmt.Println() - позволяет вывести строку с переносом
+// на следующую строку.
+
+// fmt.Printf() - позволяет вывести строку с переменной.
