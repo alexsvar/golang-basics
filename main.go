@@ -12,15 +12,15 @@ func main() {
 	userHeight, userWeight := getUserInput()
 	BMI := calculateBMI(userHeight, userWeight)
 	outputResult(BMI)
-	if BMI < 18.5 {
+	switch {
+	case BMI < 18.5:
 		fmt.Println("У вас сильный дефицит массы тела")
-	} else if BMI < 25 {
+	case BMI < 25: 
 		fmt.Println("У вас нормальная масса тела")
-	} else if BMI < 30 {
+	case BMI < 30: 
 		fmt.Println("У вас избыточная масса тела")
-	} else {
-		fmt.Println("У вас степень ожирения")
-	} 	
+	default: fmt.Println("У вас степень ожирения")
+	}
 }
 
 func outputResult(bmi float64) {

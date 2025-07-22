@@ -10,7 +10,14 @@ GO THEORY
 // CREATING FUNCTIONS
 // DATA TYPES
 // BOOLEAN LOGIC
-//
+// IF/ELSE
+// SWITCH
+// 
+// 
+// 
+// 
+// 
+// 
 
 
 //
@@ -245,3 +252,62 @@ func outputResult(bmi float64) {
 // NOT A !(A > 10) -> A <=10
 // TRUE ==========> FALSE
 // FALSE <========= TRUE
+
+
+// 
+// // IF/ELSE
+// 
+
+///////
+package main
+
+import (
+	"fmt"
+	"math"
+)
+
+const bmiPower = 2
+
+func main() {
+	fmt.Println("__ Калькулятор индекса массы тела __")
+	userHeight, userWeight := getUserInput()
+	BMI := calculateBMI(userHeight, userWeight)
+	outputResult(BMI)
+	if BMI < 18.5 {
+		fmt.Println("У вас сильный дефицит массы тела")
+	} else if BMI < 25 {
+		fmt.Println("У вас нормальная масса тела")
+	} else if BMI < 30 {
+		fmt.Println("У вас избыточная масса тела")
+	} else {
+		fmt.Println("У вас степень ожирения")
+	} 	
+}
+
+func outputResult(bmi float64) {
+	result := fmt.Sprintf("Ваш индекс массы тела: %.0f", bmi)
+	fmt.Println(result)
+}
+
+func calculateBMI(userHeight float64, userWeight float64) float64 {
+	BMI := userWeight / math.Pow(userHeight / 100, bmiPower)
+	return BMI
+}
+
+func getUserInput() (float64, float64)  {
+	var userHeight float64
+	var userWeight float64
+	fmt.Print("Введите свой рост в сантиметрах: ")
+	fmt.Scan(&userHeight)
+	fmt.Print("Введите свой вес: ")
+	fmt.Scan(&userWeight)
+	return userHeight, userWeight
+}
+///////
+
+
+// 
+// // SWITCH
+// 
+
+// 
