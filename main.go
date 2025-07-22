@@ -8,12 +8,10 @@ import (
 const bmiPower = 2
 
 func main() {
-	// i := 0
-	// for i < 10 {
-	// 	fmt.Printf("%d\n", i)
-	// 	i++
-	// }
 	for i := 0; i < 10; i++ {
+		if i == 5 {
+		 	continue
+		}
 		fmt.Printf("%d\n", i)
 	}
 
