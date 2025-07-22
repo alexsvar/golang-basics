@@ -14,8 +14,9 @@ func main() {
 		userHeight, userWeight := getUserInput()
 		BMI, err := calculateBMI(userHeight, userWeight)
 		if err != nil {
-			fmt.Println("Не верно заданы параметры для расчёта")
-			continue
+			// fmt.Println("Не верно заданы параметры для расчёта")
+			// continue
+			panic("Не верно заданы параметры для расчёта")
 		}
 		outputResult(BMI)
 		isRepeatCalculation := checkRepeatCalculation()
