@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"math"
 )
@@ -11,7 +12,11 @@ func main() {
 	fmt.Println("__ Калькулятор индекса массы тела __")
 	for {
 		userHeight, userWeight := getUserInput()
-		BMI := calculateBMI(userHeight, userWeight)
+		BMI, err := calculateBMI(userHeight, userWeight)
+		if err != nil {
+			fmt.Println("Не верно заданы параметры для расчёта")
+			continue
+		}
 		outputResult(BMI)
 		isRepeatCalculation := checkRepeatCalculation()
 		if !isRepeatCalculation {
@@ -34,9 +39,12 @@ func outputResult(bmi float64) {
 	}
 }
 
-func calculateBMI(userHeight float64, userWeight float64) float64 {
+func calculateBMI(userHeight float64, userWeight float64) (float64, error) {
+	if userWeight <= 0 || userHeight <= 0 {
+		return 0, errors.New("NO_PARAMS_ERROR")
+	}
 	BMI := userWeight / math.Pow(userHeight / 100, bmiPower)
-	return BMI
+	return BMI, nil
 }
 
 func getUserInput() (float64, float64)  {

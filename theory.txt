@@ -14,7 +14,7 @@ GO THEORY
 // SWITCH
 // LOOPS
 // BREAK & CONTINUE
-// 
+// ERROR
 // 
 // 
 // 
@@ -391,3 +391,11 @@ for i := 0; i < 10; i++ {
 		fmt.Printf("%d\n", i)
 }
  // logs 0 1 2 3 4 6 7 8 9
+
+
+ // 
+ // // ERROR
+ // 
+
+ // nil - отсутствующее значение.
+ // error всегда возвращается последним параметром.
