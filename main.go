@@ -11,22 +11,21 @@ func main() {
 	fmt.Println("__ Калькулятор индекса массы тела __")
 	userHeight, userWeight := getUserInput()
 	BMI := calculateBMI(userHeight, userWeight)
-
-	if BMI < 16 {
-		fmt.Println("У вас сильный дефицит массы тела")
-	}
-	if BMI < 18.5 && BMI >= 16 {
-		fmt.Println("У вас дефицит массы тела")
-	}
-	if BMI < 25 && BMI >= 18.5 {
-		fmt.Println("У вас нормальная масса тела")
-	}
 	outputResult(BMI)
+	if BMI < 18.5 {
+		fmt.Println("У вас сильный дефицит массы тела")
+	} else if BMI < 25 {
+		fmt.Println("У вас нормальная масса тела")
+	} else if BMI < 30 {
+		fmt.Println("У вас избыточная масса тела")
+	} else {
+		fmt.Println("У вас степень ожирения")
+	} 	
 }
 
 func outputResult(bmi float64) {
 	result := fmt.Sprintf("Ваш индекс массы тела: %.0f", bmi)
-	fmt.Print(result)
+	fmt.Println(result)
 }
 
 func calculateBMI(userHeight float64, userWeight float64) float64 {
