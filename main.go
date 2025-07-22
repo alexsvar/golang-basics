@@ -5,10 +5,16 @@ import (
 	"math"
 )
 
+const bmiPower = 2
+
 func main() {
 	fmt.Println("__ Калькулятор индекса массы тела __")
 	userHeight, userWeight := getUserInput()
 	BMI := calculateBMI(userHeight, userWeight)
+
+	if BMI < 16 {
+		fmt.Println("У вас недостаток веса")
+	}
 	outputResult(BMI)
 }
 
@@ -18,7 +24,6 @@ func outputResult(bmi float64) {
 }
 
 func calculateBMI(userHeight float64, userWeight float64) float64 {
-	const bmiPower = 2
 	BMI := userWeight / math.Pow(userHeight / 100, bmiPower)
 	return BMI
 }
