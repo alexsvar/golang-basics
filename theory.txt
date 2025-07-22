@@ -9,7 +9,7 @@ GO THEORY
 // STRINGS FORMATTING
 // CREATING FUNCTIONS
 // DATA TYPES
-//
+// BOOLEAN LOGIC
 //
 
 
@@ -228,3 +228,20 @@ func outputResult(bmi float64) {
 // bool - логичческий тип данных. true или false.
 
 
+// 
+// // BOOLEAN LOGIC
+// 
+
+// A и B (A > 0 && A < 10)
+// ======== TRUE === FALSE
+// TRUE === TRUE === FALSE
+// FALSE == FLASE == FALSE
+
+// A или B (A > 10 || A < 0)
+// ======== TRUE === FALSE
+// TRUE === TRUE === TRUE
+// FALSE == TRUE === FALSE
+
+// NOT A !(A > 10) -> A <=10
+// TRUE ==========> FALSE
+// FALSE <========= TRUE

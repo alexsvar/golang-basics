@@ -13,7 +13,13 @@ func main() {
 	BMI := calculateBMI(userHeight, userWeight)
 
 	if BMI < 16 {
-		fmt.Println("У вас недостаток веса")
+		fmt.Println("У вас сильный дефицит массы тела")
+	}
+	if BMI < 18.5 && BMI >= 16 {
+		fmt.Println("У вас дефицит массы тела")
+	}
+	if BMI < 25 && BMI >= 18.5 {
+		fmt.Println("У вас нормальная масса тела")
 	}
 	outputResult(BMI)
 }
