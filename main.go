@@ -8,6 +8,15 @@ import (
 const bmiPower = 2
 
 func main() {
+	// i := 0
+	// for i < 10 {
+	// 	fmt.Printf("%d\n", i)
+	// 	i++
+	// }
+	for i := 0; i < 10; i++ {
+		fmt.Printf("%d\n", i)
+	}
+
 	fmt.Println("__ Калькулятор индекса массы тела __")
 	userHeight, userWeight := getUserInput()
 	BMI := calculateBMI(userHeight, userWeight)
