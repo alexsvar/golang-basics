@@ -9,8 +9,6 @@
 // ARRAY'S LOOPS
 // EXERCISE 2
 // FUNCTION MAKE
-//
-//
 
 
 // 
