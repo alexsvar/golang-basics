@@ -6,8 +6,8 @@
 // DYNAMIC SLICES
 // EXERCISE 1
 // UNPACK
-//
-//
+// ARRAY'S LOOPS
+// EXERCISE 2
 //
 //
 //
@@ -204,3 +204,35 @@ tr2 := []int{4, 5, 6}
 tr1 = append(tr1, tr2...)
 fmt.Print(tr1)
 // logs [1 2 3 4 5 6]
+
+
+// 
+// // ARRAY'S LOOPS
+// 
+
+// Записываем цикл for, дальше переменные index и value, 
+// которые мы хотим получить из нашего массива на каждой итерации, 
+// для этого используется ключевое слово range и массив, по которому мы будем проходиться.
+
+tr1 := []int{1, 2, 3}
+tr2 := []int{4, 5, 6}
+tr1 = append(tr1, tr2...)
+fmt.Println(tr1)
+for _, value := range tr1 {
+	fmt.Println(value)
+}
+
+// logs:
+// 1
+// 2
+// 3
+// 4
+// 5
+// 6
+
+
+// 
+// // EXERCISE 2
+// 
+
+// 1. Рассчитать итоговый баланс всех транзакций.
