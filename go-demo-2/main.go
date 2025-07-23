@@ -3,6 +3,21 @@ package main
 import "fmt"
 
 func main() {
+	tr := make([]string, 0, 2)
+	fmt.Println(len(tr), cap(tr))
+
+	tr = append(tr, "1")
+	fmt.Println(len(tr), cap(tr))
+
+	tr = append(tr, "2")
+	fmt.Println(len(tr), cap(tr))
+
+	tr = append(tr, "3")
+	fmt.Println(len(tr), cap(tr))
+
+	fmt.Println(tr)
+
+
 	transactions := []float64{}
 	for {
 		transaction := scanTransaction()

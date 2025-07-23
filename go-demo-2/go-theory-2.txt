@@ -8,7 +8,7 @@
 // UNPACK
 // ARRAY'S LOOPS
 // EXERCISE 2
-//
+// FUNCTION MAKE
 //
 //
 
@@ -271,3 +271,35 @@ func calculateBalance(arr[]float64) float64 {
 }
 /////// 
 
+
+//
+// // FUNCTION MAKE
+// 
+
+// Функция make([]string, elNumberDefault, arrCapacity)
+// Если мы заранее знаем, количество элементов в массиве,
+// то функцию make передаём это количество в arrCapacity.
+// Если элементов будет больше указанного количества,
+// go будет выделять дополнительную память для последующих элементов.
+
+tr := make([]string, 0, 2)
+	fmt.Println(len(tr), cap(tr))
+
+	tr = append(tr, "1")
+	fmt.Println(len(tr), cap(tr))
+
+	tr = append(tr, "2")
+	fmt.Println(len(tr), cap(tr))
+
+	tr = append(tr, "3")
+	fmt.Println(len(tr), cap(tr))
+	
+	fmt.Println(tr)
+
+
+// logs: 
+// 0 2
+// 1 2
+// 2 2
+// 3 4
+// [1 2 3]
