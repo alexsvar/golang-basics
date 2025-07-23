@@ -3,15 +3,6 @@ package main
 import "fmt"
 
 func main() {
-	tr1 := []int{1, 2, 3}
-	tr2 := []int{4, 5, 6}
-	tr1 = append(tr1, tr2...)
-	fmt.Println(tr1)
-	
-	for _, value := range tr1 {
-		fmt.Println(value)
-	}
-
 	transactions := []float64{}
 	for {
 		transaction := scanTransaction()
@@ -20,7 +11,8 @@ func main() {
 		}
 		transactions = append(transactions, transaction)
 	}
-	fmt.Println(transactions)
+	sum := calculateBalance(transactions)
+	fmt.Printf("Ваш баланс: %.2f", sum)
 }
 
 func scanTransaction() float64 {
@@ -28,4 +20,12 @@ func scanTransaction() float64 {
 	var transaction float64
 	fmt.Scan(&transaction)
 	return transaction
+}
+
+func calculateBalance(arr[]float64) float64 {
+	sum := 0.0
+	for _, value := range arr {
+		sum += value
+	}
+	return sum
 }
