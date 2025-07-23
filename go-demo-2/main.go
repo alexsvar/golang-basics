@@ -3,13 +3,16 @@ package main
 import "fmt"
 
 func main() {
-	transactions := [5]int{1, 2, 3, 4, 5}
-	banks := [2]string{}
+	transactions := [6]int{1, 2, 3, 4, 5, 6}
+	transactionsPartial := transactions[1:5]
+	transactionsNewPartial := transactionsPartial[:1]
+	transactionsNewPartial[0] = 30
 
-	fmt.Println(transactions[1])
-	banks[0] = "Сбер"
-	fmt.Println(banks)
+	transactionsNewPartial = transactionsNewPartial[0:4]
 
-	partial := transactions[1:4]
-	fmt.Println(partial)
+	fmt.Println(transactions)
+	fmt.Println(transactionsPartial)
+	fmt.Println(transactionsNewPartial)
+	fmt.Println(len(transactionsPartial), cap(transactionsPartial))
+	fmt.Println(len(transactionsNewPartial), cap(transactionsNewPartial))
 }

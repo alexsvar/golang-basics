@@ -2,7 +2,7 @@
 
 // ARRAYS
 // SLICES
-//
+// METHODS Cap & len
 //
 //
 //
@@ -76,3 +76,40 @@ func main() {
 	partial2 := transactions[:4]
 	// logs [1, 2, 3, 4]
 }
+
+
+// 
+// // METHODS Cap & len
+// 
+
+func main() {
+	transactions := [5]int{1, 2, 3, 4, 5}
+	transactionsPartial := transactions[1:]
+	transactionsPartial[0] = 30
+
+	fmt.Println(transactions)
+	fmt.Println(transactionsPartial)
+}
+
+// Если поменять элемент среза массива, в исходном массиве элемент так же поменяется,
+// потому что срезы - ссылочные типы данных.
+// Массивы занимают фиксированное месть в памяти, а срезы - ссылки на них.
+// logs:
+// [1 30 3 4 5]
+// [30 3 4 5]
+
+// // У срезов есть 2 свойства:
+// cap - Capacity вместимость
+//
+// len - Length длина
+
+// ARRAY ======== 520, 230, 320, 100
+// SLICE OF ARRAY [1:] 230, 320, 100 - len 3, cap 3
+// SLICE OF SLICE [:1] 230, ___, ___ - len 3, cap 1
+
+fmt.Println(transactions) // logs [1 30 3 4 5]
+fmt.Println(transactionsPartial) // logs [30 3 4 5]
+fmt.Println(transactionsNewPartial) // logs [30]
+fmt.Println(len(transactionsPartial), cap(transactionsPartial)) // logs 4 4
+fmt.Println(len(transactionsNewPartial), cap(transactionsNewPartial)) // logs 1 4
+
