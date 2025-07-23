@@ -3,16 +3,12 @@ package main
 import "fmt"
 
 func main() {
-	transactions := [6]int{1, 2, 3, 4, 5, 6}
-	transactionsPartial := transactions[1:5]
-	transactionsNewPartial := transactionsPartial[:1]
-	transactionsNewPartial[0] = 30
+	transactions := []int{10, 20, 30}
+	temp := transactions
+	transactions = append(transactions, 50)
+	newTransactions := append(transactions, 100, 200);
 
-	transactionsNewPartial = transactionsNewPartial[0:4]
-
+	fmt.Println(temp)
 	fmt.Println(transactions)
-	fmt.Println(transactionsPartial)
-	fmt.Println(transactionsNewPartial)
-	fmt.Println(len(transactionsPartial), cap(transactionsPartial))
-	fmt.Println(len(transactionsNewPartial), cap(transactionsNewPartial))
+	fmt.Println(newTransactions)
 }

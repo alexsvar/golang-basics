@@ -2,8 +2,8 @@
 
 // ARRAYS
 // SLICES
-// METHODS Cap & len
-//
+// CAPACITY & LENGTH
+// DYNAMIC SLICES
 //
 //
 //
@@ -21,18 +21,18 @@
 // Каждому элементу массива присвоен свой индекс, начиная с 0.
 
 // Способы объявления массивов:
-// var arrayName [length]type
-// var transactions [3]int
-// transactions = [3]int{5, 10, -7}
-// banks := [2]string{"Сбер", "Альфа"}
+var arrayName [length]type
+var transactions [3]int
+transactions = [3]int{5, 10, -7}
+banks := [2]string{"Сбер", "Альфа"}
 
 // Получение элемента по индексу:
 fmt.Println(transactions[0])
 // logs 5
 
 // Запись элемента по индексу:
-// banks[0] = "Сбер"
-// fmt.Println(banks)
+banks[0] = "Сбер"
+fmt.Println(banks)
 // logs ["Сбер" ]
 
 
@@ -79,7 +79,7 @@ func main() {
 
 
 // 
-// // METHODS Cap & len
+// // CAPACITY & LENGTH
 // 
 
 func main() {
@@ -113,3 +113,48 @@ fmt.Println(transactionsNewPartial) // logs [30]
 fmt.Println(len(transactionsPartial), cap(transactionsPartial)) // logs 4 4
 fmt.Println(len(transactionsNewPartial), cap(transactionsNewPartial)) // logs 1 4
 
+///////
+package main
+
+import "fmt"
+
+func main() {
+	transactions := [6]int{1, 2, 3, 4, 5, 6}
+	transactionsPartial := transactions[1:5]
+	transactionsNewPartial := transactionsPartial[:1]
+	transactionsNewPartial[0] = 30
+
+	transactionsNewPartial = transactionsNewPartial[0:4]
+
+	fmt.Println(transactions)
+	fmt.Println(transactionsPartial)
+	fmt.Println(transactionsNewPartial)
+	fmt.Println(len(transactionsPartial), cap(transactionsPartial))
+	fmt.Println(len(transactionsNewPartial), cap(transactionsNewPartial))
+}
+///////
+
+
+// 
+// // DYNAMIC SLICES
+// 
+
+// transactions := []int{10, 20, 30}
+// transactions теперь не имеет максимальной длины
+// Добавлять элементы можно с помощью метода append(slice, el).
+// append сначала принимает slice, в который мы хотим добавить элемент,
+// вторым аргументом принимает элемент или другой slice, который мы хотим добавить.
+// append сначала проверяет доступную capacity, прежде чем добавить элемент.
+// Если capacity недостаточно, он её увеличивает, затем присваивает новый элемент.
+// Затем новой переменной присваивает slice с новым элементом.
+// append() возвращает новый slice.
+transactions := []int{10, 20, 30}
+append(transactions, 100, 200)
+
+// Так же можно добавить в transactions новый элемент путём его переопределения:
+transactions := []int{10, 20, 30}
+transactions = append(transactions, 50)
+append(transactions, 100, 200)
+// logs [10 20 30 50 100 200]
+
+// После применения append, создаётся новый указатель на место в памяти.
