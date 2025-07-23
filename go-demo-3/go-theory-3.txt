@@ -184,3 +184,19 @@ func deleteBookmark(bookmarks map[string]string) map[string]string {
 // 
 // // LABELS
 // 
+
+// С помощью label мы можем обозначить цикл каким-либо наименованием:
+Menu:
+	for {
+		variant := getMenu()
+		switch variant {
+		case 1:
+			printBookmarks(bookmarks)
+		case 2:
+			bookmarks = addBookmark(bookmarks)
+		case 3:
+			bookmarks = deleteBookmark(bookmarks)
+		case 4:
+			break Menu
+		}
+	}

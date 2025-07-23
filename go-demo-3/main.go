@@ -6,6 +6,8 @@ func main() {
 	bookmarks := map[string]string{}
 
 	fmt.Println("Приложение для закладок")
+
+Menu:
 	for {
 		variant := getMenu()
 		switch variant {
@@ -16,7 +18,7 @@ func main() {
 		case 3:
 			bookmarks = deleteBookmark(bookmarks)
 		case 4:
-			break
+			break Menu
 		}
 	}
 }
