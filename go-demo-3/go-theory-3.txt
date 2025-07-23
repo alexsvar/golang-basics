@@ -1,8 +1,8 @@
 // // GO THEORY 3 // // 
 
 // MAP
-// 
-// 
+// CHANGING THE MAP
+// MAP'S ITERATION
 // 
 // 
 // 
@@ -20,3 +20,87 @@
 // m := map[keyType]valueType{
 //    key: value	
 // }
+
+///////
+package main
+
+import "fmt"
+
+func main() {
+	m := map[string]string{
+		"Github": "https://github.com",
+	}
+	fmt.Println(m)
+}
+// logs: map[Google:https://google.com]
+///////
+
+
+// 
+// // CHANGING THE MAP
+// 
+
+// 1. Получение элемента и вывод значения по ключу в консоль:
+fmt.Print(m["Github"])
+// logs: https://github.com
+
+// 2. Изменение значения по ключу: 
+m["Yandex"] = "https://yandex.ru"
+fmt.Print(m["Yandex"])
+// logs https://yandex.ru
+
+// 3. Добавление элементов: 
+m["VK"] = "https://vk.com"
+fmt.Print(m["VK"])
+// logs: https://vk.com
+
+// 4. Удаление элементов:
+// delete(map, key)
+delete(m, "VK")
+fmt.Print(m)
+// logs: map[Github:https://github.com Google:https://google.com Yandex:https://yandex.ru]
+
+///////
+package main
+
+import "fmt"
+
+func main() {
+	m := map[string]string{
+		"Github": "https://github.com",
+		"Google": "https://google.com",
+		"Yandex": "yandex",
+	}
+	fmt.Println(m)
+	fmt.Println(m["Github"])
+
+	m["Yandex"] = "https://yandex.ru"
+	fmt.Println(m["Yandex"])
+	
+	m["VK"] = "https://vk.com"
+	fmt.Println(m["VK"])
+	
+	delete(m, "VK")
+	fmt.Println(m)
+}
+///////
+
+
+// 
+// // MAP'S ITERATION
+// 
+
+m := map[string]string{
+		"Github": "https://github.com",
+		"Google": "https://google.com",
+		"Yandex": "yandex",
+}
+
+for key, value := range m {
+		fmt.Println(key, value)
+}
+
+// logs:
+// Github https://github.com
+// Google https://google.com
+// Yandex https://yandex.ru
