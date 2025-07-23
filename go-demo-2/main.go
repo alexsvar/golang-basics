@@ -3,12 +3,20 @@ package main
 import "fmt"
 
 func main() {
-	transactions := []int{10, 20, 30}
-	temp := transactions
-	transactions = append(transactions, 50)
-	newTransactions := append(transactions, 100, 200);
-
-	fmt.Println(temp)
+	transactions := []float64{}
+	for {
+		transaction := scanTransaction()
+		if transaction == 0 {
+			break
+		}
+		transactions = append(transactions, transaction)
+	}
 	fmt.Println(transactions)
-	fmt.Println(newTransactions)
+}
+
+func scanTransaction() float64 {
+	fmt.Print("Введите вашу транзакцию (n для выхода): ")
+	var transaction float64
+	fmt.Scan(&transaction)
+	return transaction
 }

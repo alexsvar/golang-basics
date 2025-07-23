@@ -4,7 +4,7 @@
 // SLICES
 // CAPACITY & LENGTH
 // DYNAMIC SLICES
-//
+// EXERCISE 1
 //
 //
 //
@@ -158,3 +158,36 @@ append(transactions, 100, 200)
 // logs [10 20 30 50 100 200]
 
 // После применения append, создаётся новый указатель на место в памяти.
+
+// 
+// // EXERCISE 1
+// 
+
+// 1. Спросить пользователя в цикле ввод транзакции (число).
+// 2. Добавлять вводы пользователя в массив транзакций.
+// 3. Вывести массив транзакций.
+
+///////
+package main
+
+import "fmt"
+
+func main() {
+	transactions := []float64{}
+	for {
+		transaction := scanTransaction()
+		if transaction == 0 {
+			break
+		}
+		transactions = append(transactions, transaction)
+	}
+	fmt.Println(transactions)
+}
+
+func scanTransaction() float64 {
+	fmt.Print("Введите вашу транзакцию (n для выхода): ")
+	var transaction float64
+	fmt.Scan(&transaction)
+	return transaction
+}
+/////// 
