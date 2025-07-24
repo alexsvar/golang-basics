@@ -1,0 +1,43 @@
+// // GO THEORY 4 // //
+
+// POINTER
+// 
+//
+//
+//
+//
+//
+//
+
+
+// 
+// // POINTER
+// 
+
+// Указатели - это переменные, которые хранят АДРЕС В ПАМЯТИ, а не адрес значения.
+num := 10
+numPointer := &num
+
+// Использование указателей:
+// 1. Убирает лишнее копирование
+// 2. Мутирует значение
+
+///////
+package main
+
+import "fmt"
+
+func main() {
+	a := 5
+	pointerA := &a
+	res := double(a)
+	fmt.Println(pointerA)
+	// logs: 0xc000104020
+
+	fmt.Println(res)
+}
+
+func double(num int) int {
+	return num * 2
+}
+///////
