@@ -3,28 +3,23 @@ package main
 import "fmt"
 
 type account struct {
-	login string
-	password string
-	url string
+	login 		string
+	password 	string
+	url 			string
 }
 
 func main() {
-	login := promptData("Введите логин")
-	password := promptData("Введите пароль")
-	url := promptData("Введите URL")
+	login := promptData("Введите логин: ")
+	password := promptData("Введите пароль: ")
+	url := promptData("Введите URL: ")
 
-	// account1 := account{
-	// 	login,
-	// 	password,
-	// 	url,
-	// }
-	account1 := account{
-		login: login,
+	myAccount := account{
+		login: 		login,
 		password: password,
-		url: url,
+		url: 			url,
 	}
 
-	outputPassword(login, password, url)
+	outputPassword(myAccount)
 }
 
 func promptData(prompt string) string {
@@ -34,6 +29,7 @@ func promptData(prompt string) string {
 	return result
 }
 
-func outputPassword(login, password, url string) {
-	fmt.Println(login, password, url)
+func outputPassword(acc account) {
+	fmt.Println(acc)
+	fmt.Println(acc.login, acc.password, acc.url)
 }
