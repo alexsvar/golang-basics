@@ -5,13 +5,6 @@ import "fmt"
 type bookmarkMap = map[string]string
 
 func main() {
-	m := make(bookmarkMap, 3)
-	m["a"] = "1"
-	m["b"] = "2"
-	m["c"] = "3"
-	fmt.Println(len(m))
-
-
 	bookmarks := bookmarkMap{}
 	fmt.Println("Приложение для закладок")
 
@@ -22,9 +15,9 @@ func main() {
 		case 1:
 			printBookmarks(bookmarks)
 		case 2:
-			bookmarks = addBookmark(bookmarks)
+			addBookmark(bookmarks)
 		case 3:
-			bookmarks = deleteBookmark(bookmarks)
+			deleteBookmark(bookmarks)
 		case 4:
 			break Menu
 		}
@@ -51,7 +44,7 @@ func printBookmarks(bookmarks bookmarkMap) {
 	}
 }
 
-func addBookmark(bookmarks bookmarkMap) bookmarkMap {
+func addBookmark(bookmarks bookmarkMap) {
 	var newBookmarkKey string
 	var newBookmarkValue string
 	fmt.Print("Введите название: ")
@@ -59,13 +52,11 @@ func addBookmark(bookmarks bookmarkMap) bookmarkMap {
 	fmt.Print("Введите адрес: ")
 	fmt.Scan(&newBookmarkValue)
 	bookmarks[newBookmarkKey] = newBookmarkValue
-	return bookmarks
 }
 
-func deleteBookmark(bookmarks bookmarkMap) bookmarkMap {
+func deleteBookmark(bookmarks bookmarkMap) {
 	var bookmarkKeyToDelete string
 	fmt.Print("Введите название для удаления закладки: ")
 	fmt.Scan(&bookmarkKeyToDelete)
 	delete(bookmarks, bookmarkKeyToDelete)
-	return bookmarks
 }

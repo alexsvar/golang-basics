@@ -6,7 +6,7 @@
 // EXERCISE BOOKMARKS
 // LABELS
 // MAKE FOR MAP
-// 
+// ALL DATA TYPES
 
 
 // 
@@ -289,3 +289,26 @@ func deleteBookmark(bookmarks bookmarkMap) bookmarkMap {
 	return bookmarks
 }
 ///////
+
+
+// 
+// // ALL DATA TYPES
+// 
+
+// BASIC TYPE
+// number
+// string
+// boolean
+//
+// AGREGATE TYPE
+// array
+// struct
+//
+// REFERENCE TYPE
+// slice
+// map
+// function
+// channel
+// 
+// INTERFACE TYPE
+//
