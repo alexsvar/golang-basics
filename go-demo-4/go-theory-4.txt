@@ -6,7 +6,7 @@
 // POINTERS IN STRUCT
 // RUNE
 // EXERCISE PASSWORD GENERATION
-//
+// STRUCT METHODS
 //
 
 
@@ -267,3 +267,29 @@ func generatePassword(n int) string {
 	return string(result)
 }
 ///////
+
+
+// 
+// // STRUCT METHODS
+//
+
+// Методы хранят вне класса, рядом со структурами.
+// Для того, чтобы указать метод, нужно между func и названием
+// указать в скобках название структуры:
+
+type account struct {
+	login string
+	password string
+	url string
+}
+
+func (account) outputPassword(acc *account) {
+	fmt.Println(acc)
+	fmt.Println((*acc).login, acc.password, acc.url)
+}
+
+// Рядом с объявлением структуры можно объявить входящий аргумент:
+func (acc account) outputPassword() {
+	fmt.Println(acc)
+	fmt.Println((*acc).login, acc.password, acc.url)
+}
