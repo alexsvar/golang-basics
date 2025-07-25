@@ -5,7 +5,7 @@
 // STRUCT
 // POINTERS IN STRUCT
 // RUNE
-//
+// EXERCISE PASSWORD GENERATION
 //
 //
 
@@ -206,3 +206,64 @@ for _, char := range string(str) {
 // 1090 т
 // 33 !
 // 41 )
+
+
+// 
+// // EXERCISE PASSWORD GENERATION
+// 
+
+// Для работы со случайными числами, 
+// импортируем пакет "math/rand/v2"
+
+///////
+package main
+
+import (
+	"fmt"
+	"math/rand/v2"
+)
+
+type account struct {
+	login string
+	password string
+	url string
+}
+
+var letterRunes = []rune("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_!?*")
+
+func main() {
+	fmt.Println(generatePassword(12))
+
+	login := promptData("Введите логин: ")
+	password := promptData("Введите пароль: ")
+	url := promptData("Введите URL: ")
+
+	myAccount := account{
+		login: login,
+		password: password,
+		url: url,
+	}
+
+	outputPassword(&myAccount)
+}
+
+func promptData(prompt string) string {
+	fmt.Print(prompt)
+	var result string
+	fmt.Scan(&result)
+	return result
+}
+
+func outputPassword(acc *account) {
+	fmt.Println(acc)
+	fmt.Println((*acc).login, acc.password, acc.url)
+}
+
+func generatePassword(n int) string {
+	result := make([]rune, n)
+	for i := range result {
+		result[i] = letterRunes[rand.IntN(len(letterRunes))]
+	}
+	return string(result)
+}
+///////
