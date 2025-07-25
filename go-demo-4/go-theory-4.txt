@@ -10,7 +10,7 @@
 // EXERCISE STRUCT MUTATION
 // FUNCTION-CONSTRUCTOR STRUCT
 // STRUCT DATA VALIDATION
-//
+// STRUCT GENERATION TRANSFER
 //
 
 
@@ -450,3 +450,9 @@ func promptData(prompt string) string {
 	return result
 }
 ///////
+
+
+// 
+// // STRUCT GENERATION TRANSFER
+//
+
