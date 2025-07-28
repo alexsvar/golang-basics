@@ -12,6 +12,8 @@
 // STRUCT DATA VALIDATION
 // STRUCT GENERATION TRANSFER
 // STRUCT COMPOSITION
+// SPLITTING THE CODE INTO PACKAGES
+// 
 
 
 // 
@@ -623,3 +625,12 @@ func promptData(prompt string) string {
 	return result
 }
 ///////
+
+
+// 
+// // SPLITTING THE CODE INTO PACKAGES
+// 
+
+// Когда код разделён на несколько пакетов, чтобы запустить проект,
+// в консоли запускаем команду:
+> go run .
