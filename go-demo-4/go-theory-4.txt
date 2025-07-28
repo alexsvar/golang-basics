@@ -13,6 +13,10 @@
 // STRUCT GENERATION TRANSFER
 // STRUCT COMPOSITION
 // SPLITTING THE CODE INTO PACKAGES
+// ADDING PACKAGES
+//
+//
+//
 // 
 
 
@@ -634,3 +638,13 @@ func promptData(prompt string) string {
 // Когда код разделён на несколько пакетов, чтобы запустить проект,
 // в консоли запускаем команду:
 > go run .
+
+
+// 
+// // ADDING PACKAGES
+// 
+
+// Как разделять на пакеты?
+// 1. По использованию
+// 2. По доменной / предметной области
+// 3. По бизнес задачам
