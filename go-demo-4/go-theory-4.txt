@@ -19,7 +19,7 @@
 // WRITE IN TO FILE
 // STACK FRAME
 // DEFER
-// 
+// READ FROM FILE
 // 
 
 
@@ -806,3 +806,54 @@ func WriteFile(content, name string) {
 
 // defer работает таким образом, что тот, кого первого вызвали с defer,
 // будет выполнен поледним.
+
+
+// 
+// // READ FROM FILE
+// 
+
+// Есть несколько способов читать файл:
+// 1. Открыть файл и читать по байтам.
+// file, err := os.Open("file.txt")
+// Этот способ хорош, если файл большой и мы хотим 
+// прочитать файл частями, не грузить сразу память.
+// 2. Открыть и прочитать целиком файл.
+// data, err := os.ReadFile("file.txt")
+
+// Дальше нужно проверить на ошибку.
+// После запуска программы, в консоли появятся байты.
+// Чтобы увидить это в более читаемом формате, нужно преобразовать
+// data к строке.
+
+files.go
+///////
+package files
+
+import (
+	"fmt"
+	"os"
+)
+
+func ReadFile() {
+	data, err := os.ReadFile("file.txt")
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	fmt.Println(string(data))
+}
+
+func WriteFile(content, name string) {
+	file, err := os.Create(name)
+	if err != nil {
+		fmt.Println(err)
+	}
+	defer file.Close()
+	_, err = file.WriteString(content)
+	if err != nil {
+		fmt.Println(err)
+		return 
+	}
+	fmt.Println("Запись успешна")
+}
+///////
