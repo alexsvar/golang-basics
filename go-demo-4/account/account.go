@@ -5,13 +5,14 @@ import (
 	"fmt"
 	"math/rand/v2"
 	"net/url"
+	"reflect"
 	"time"
 )
 
 var letterRunes = []rune("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_!?*")
 
 type Account struct {
-	login string
+	login string `json:"login" xml:"test"`
 	password string
 	url string
 }
@@ -53,6 +54,8 @@ func NewAccountWithTimestamp(login, password, urlString string) (*AccountWithTim
 			url: urlString,
 		},
 	}
+	field, _ := reflect.TypeOf(newAcc).Elem().FieldByName("login")
+	fmt.Println(string(field.Tag))
 	if password == "" {
 		newAcc.Account.generatePassword(12)
 	}
