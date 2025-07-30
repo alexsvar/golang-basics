@@ -15,7 +15,7 @@
 // SPLITTING THE CODE INTO PACKAGES
 // ADDING PACKAGES
 // IMPORTS & EXPORTS OF PACKAGES
-//
+// ADDING THIRD-PARTY PACKAGES
 //
 // 
 
@@ -669,3 +669,19 @@ func promptData(prompt string) string {
 // а всё что должно быть доступно - с большой буквы.
 // // func newAccountWithTimestamp(...)
 
+
+// 
+// // ADDING THIRD-PARTY PACKAGES
+// 
+
+> go get github.com/fatih/color
+
+// в go.mod добавятся все необходимые зависимоси, которые будут использоваться
+// для этого пакета. 
+// Чтобы восстановить установленные пакеты на другом компьютере,
+// мы должны ввести в консоли команду:
+> go get 
+
+// Чтобы использовать установленный пакет, в пакете account.go в импортах прописываем
+// "github.com/fatih/color", в func OutputPassword вместо fmt.Println(...) 
+// пишем color.Cyan(acc.login)
