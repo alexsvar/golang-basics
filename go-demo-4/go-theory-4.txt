@@ -22,6 +22,8 @@
 // READ FROM FILE
 // JSON
 // STRUCT TAGS
+// SAVING JSON
+// 
 // 
 // 
 
@@ -956,3 +958,29 @@ func NewAccountWithTimestamp(login, password, urlString string) (*AccountWithTim
 // login string `json:"login" xml:"test"`
 // field, _ := reflect.TypeOf(newAcc).Elem().FieldByName("login")
 // fmt.Println(string(field.Tag))
+
+
+// 
+// // SAVING JSON
+// 
+
+// Во внутреннем пакете json есть 2 метода Marshal и MarshalIndent, 
+// которые обеспечивают преобразование.
+// MarshalIndent - сохраняем в более читаемом виде, с отступами.
+//
+// Marshal - сохраняем в виде строки
+// Принимает структуру, которую хотим превратить. 
+// Возвращает массив байт file и ошибку error
+
+// функция преобразования account
+
+account.go
+///////
+func (acc *Account) ToBytes() ([]byte, error) {
+	file, err := json.Marshal(acc)
+	if err != nil {
+		return nil, err
+	}
+	return file, nil
+}
+///////

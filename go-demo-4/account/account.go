@@ -1,30 +1,35 @@
 package account
 
 import (
+	"encoding/json"
 	"errors"
 	"fmt"
 	"math/rand/v2"
 	"net/url"
-	"reflect"
+
 	"time"
 )
 
 var letterRunes = []rune("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_!?*")
 
 type Account struct {
-	login string `json:"login" xml:"test"`
-	password string
-	url string
-}
-
-type AccountWithTimestamp struct{
-	createdAt time.Time
-	updatedAt time.Time
-	Account
+	Login 		string 		`json:"login"`
+	Password 	string 		`json:"password"`
+	Url 			string 		`json:"url"`
+	CreatedAt time.Time `json:"createdAt"`
+	UpdatedAt time.Time `json:"updatedAt"`
 }
 
 func (acc *Account) OutputPassword() {
-	fmt.Println(acc.login, acc.password, acc.url)
+	fmt.Println(acc.Login, acc.Password, acc.Url)
+}
+
+func (acc *Account) ToBytes() ([]byte, error) {
+	file, err := json.Marshal(acc)
+	if err != nil {
+		return nil, err
+	}
+	return file, nil
 }
 
 func (acc *Account) generatePassword(n int) {
@@ -32,10 +37,10 @@ func (acc *Account) generatePassword(n int) {
 	for i := range result {
 		result[i] = letterRunes[rand.IntN(len(letterRunes))]
 	}
-	acc.password = string(result)
+	acc.Password = string(result)
 }
 
-func NewAccountWithTimestamp(login, password, urlString string) (*AccountWithTimestamp, error) {
+func NewAccount(login, password, urlString string) (*Account, error) {
 	if login == "" {
 		return nil, errors.New("INVALID_LOGIN")
 	}
@@ -45,19 +50,16 @@ func NewAccountWithTimestamp(login, password, urlString string) (*AccountWithTim
 		return nil, errors.New("INVALID_URL")
 	}
 
-	newAcc := &AccountWithTimestamp{
-		createdAt: time.Now(),
-		updatedAt: time.Now(),
-		Account: Account{
-			login: login,
-			password: password,
-			url: urlString,
-		},
+	newAcc := &Account{
+		CreatedAt: time.Now(),
+		UpdatedAt: time.Now(),
+		Login: login,
+		Password: password,
+		Url: urlString,
 	}
-	field, _ := reflect.TypeOf(newAcc).Elem().FieldByName("login")
-	fmt.Println(string(field.Tag))
+
 	if password == "" {
-		newAcc.Account.generatePassword(12)
+		newAcc.generatePassword(12)
 	}
 	return newAcc, nil
 }
