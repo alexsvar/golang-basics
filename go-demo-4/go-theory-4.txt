@@ -782,3 +782,27 @@ func main() {
 // // DEFER
 // 
 
+// В go есть ключевое слово defer, которое позволяет отложить выполнение
+// какого-либо действия на конец выполнения функции. Последняя операция 
+// в стэке, после которой наш фрейм быдет уходить. Таких операций может быть 
+// несколько.
+
+files.go
+///////
+func WriteFile(content, name string) {
+	file, err := os.Create(name)
+	if err != nil {
+		fmt.Println(err)
+	}
+	_, err = file.WriteString(content)
+	defer file.Close()
+	if err != nil {
+		fmt.Println(err)
+		return 
+	}
+	fmt.Println("Запись успешна")
+}
+///////
+
+// defer работает таким образом, что тот, кого первого вызвали с defer,
+// будет выполнен поледним.
