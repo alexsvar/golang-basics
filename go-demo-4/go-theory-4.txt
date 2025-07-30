@@ -20,6 +20,9 @@
 // STACK FRAME
 // DEFER
 // READ FROM FILE
+// JSON
+// 
+// 
 // 
 
 
@@ -857,3 +860,12 @@ func WriteFile(content, name string) {
 	fmt.Println("Запись успешна")
 }
 ///////
+
+
+//
+// // JSON
+// 
+
+// JSON - JavaScript Object Notation
+// key: value
+// "title": "iPhone 11"
