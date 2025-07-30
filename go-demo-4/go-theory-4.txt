@@ -17,6 +17,9 @@
 // IMPORTS & EXPORTS OF PACKAGES
 // ADDING THIRD-PARTY PACKAGES
 // WRITE IN TO FILE
+// STACK FRAME
+// DEFER
+// 
 // 
 
 
@@ -757,3 +760,25 @@ func main() {
 	fmt.Println(myAccount)
 }
 ///////
+
+
+//
+// // STACK FRAME
+// 
+
+// WriteFile (content, file, name, err)
+// ^
+// |
+// Main
+
+// Сначала в стэке вызывается Main
+// Затем появляется frame WriteFile 
+// Он выполняется и завершается
+// Затем мы снова продолжаем frame Main
+// А именно, то что было указано после WriteFile
+
+
+//
+// // DEFER
+// 
+
