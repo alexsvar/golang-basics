@@ -16,7 +16,7 @@
 // ADDING PACKAGES
 // IMPORTS & EXPORTS OF PACKAGES
 // ADDING THIRD-PARTY PACKAGES
-//
+// WRITE IN TO FILE
 // 
 
 
@@ -695,3 +695,65 @@ func promptData(prompt string) string {
 // Команда, которая позволяет разделять прямые и непрямые зависимости пакетов.
 // Так же удаляет все неиспользуемые зависимости в коде.
 // Восстанавливает зависимости, которые используются в коде.
+
+
+// 
+// // WRITE IN TO FILE
+// 
+
+// Для записи в файл, его сначала нужно создать. Для этого импортируем встроенную
+// библиотеку os и используем функцию Create(). Возвращает файл и ошибку.
+// Обрабатываем ошибку с помощью if ... 
+// Затем записываем в файл с помощью метода WriteString(), который принимает
+// content. Возвращает длину байт и ошибку (len и err).
+// Обрабатываем ошибку с помощью if ... 
+// После того как записали в файл, его нужно закрыть. Для этого у file 
+// есть метод Close(), который возвращает ошибку закрытия, если не получилось закрыть.
+// В конце выводим сообщение о том, что "Запись успешна".
+// Так же закрываем файл.
+// Создали файл -> Проверили на ошибку -> Записали в файл -> Проверили на ошибку -> Закрыли файл.
+
+files.go
+///////
+package files
+
+import (
+	"fmt"
+	"os"
+)
+
+func ReadFile() {}
+
+func WriteFile(content, name string) {
+	file, err := os.Create(name)
+	if err != nil {
+		fmt.Println(err)
+	}
+	_, err = file.WriteString(content)
+	if err != nil {
+		file.Close()
+		fmt.Println(err)
+		return 
+	}
+	fmt.Println("Запись успешна")
+	file.Close()
+}
+///////
+
+main.go
+///////
+func main() {
+	files.WriteFile("It is file", "file.txt")
+	login := promptData("Введите логин: ")
+	password := promptData("Введите пароль: ")
+	url := promptData("Введите URL: ")
+	myAccount, err := account.NewAccountWithTimestamp(login, password, url)
+	if err != nil {
+		fmt.Println("Неверный формат URL или Login")
+		return
+	}
+
+	myAccount.OutputPassword()
+	fmt.Println(myAccount)
+}
+///////
