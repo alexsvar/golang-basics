@@ -17,7 +17,7 @@ Menu:
 		case 2:
 			findAccount(vault)
 		case 3:
-			deleteAccount()
+			deleteAccount(vault)
 		default:
 			break Menu
 		}
@@ -58,7 +58,16 @@ func findAccount(vault *account.Vault) {
 	}
 }
 
-func deleteAccount() {}
+func deleteAccount(vault *account.Vault) {
+	url := promptData("Введите url для поиска ")
+	isDeleted := vault.DeleteAccountByUrl(url)
+	if isDeleted {
+		fmt.Println("Удалено")
+	} else {
+		fmt.Println("Не удалось найти аккаунт")
+	}
+
+}
 
 func promptData(prompt string) string {
 	fmt.Print(prompt)

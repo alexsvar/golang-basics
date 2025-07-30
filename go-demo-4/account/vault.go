@@ -66,3 +66,25 @@ func (vault *Vault) FindAccountsByUrl(url string) []Account {
 	}
 	return accounts
 }
+
+// Удаление аккаунта по URL
+func (vault *Vault) DeleteAccountByUrl(url string) bool {
+	var accounts []Account
+	isDeleted := false
+	for _, account := range vault.Accounts {
+		isMatched := strings.Contains(account.Url, url)
+		if !isMatched {
+			accounts = append(accounts, account)
+			continue
+		}
+		isDeleted = true
+	}
+	vault.Accounts = accounts
+	vault.UpdatedAt = time.Now()
+	data, err := vault.ToBytes()
+	if err != nil {
+		fmt.Println("Не удалось преобразовать")
+	}
+	files.WriteFile(data, "data.json")
+	return isDeleted
+}
