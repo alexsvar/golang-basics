@@ -23,7 +23,7 @@
 // JSON
 // STRUCT TAGS
 // SAVING JSON
-// 
+// SLICE STRUCT
 // 
 // 
 
@@ -984,3 +984,10 @@ func (acc *Account) ToBytes() ([]byte, error) {
 	return file, nil
 }
 ///////
+
+
+// 
+// // SLICE STRUCT
+// 
+
+//
