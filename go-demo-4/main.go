@@ -2,31 +2,26 @@ package main
 
 import (
 	"demo/app-4/account"
-	"demo/app-4/files"
 	"fmt"
 )
 
 func main() {
-	// 1. create account
-	// 2. find account
-	// 3. delete account
-	// 4. exit
 	fmt.Println("___МЕНЕДЖЕР ПАРОЛЕЙ___")
+	vault := account.NewVault()
+Menu:
 	for {
 		variant := getMenu()
-		Menu:
 		switch variant {
 		case 1:
-			createAccount()
+			createAccount(vault)
 		case 2:
-			findAccount()
+			findAccount(vault)
 		case 3:
 			deleteAccount()
 		default:
-			break Menu;
+			break Menu
 		}
 	}
-	createAccount()
 }
 
 func getMenu() int {
@@ -40,7 +35,7 @@ func getMenu() int {
 	return variant
 }
 
-func createAccount() {
+func createAccount(vault *account.Vault) {
 	login := promptData("Введите логин: ")
 	password := promptData("Введите пароль: ")
 	url := promptData("Введите URL: ")
@@ -49,17 +44,19 @@ func createAccount() {
 		fmt.Println("Неверный формат URL или Login")
 		return
 	}
-	vault := account.NewVault()
 	vault.AddAccount(*myAccount)
-	data, err := vault.ToBytes()
-	if err != nil {
-		fmt.Println("Не удалось преобразовать в JSON")
-		return
-	}
-	files.WriteFile(data, "data.json")
 }
 
-func findAccount() {}
+func findAccount(vault *account.Vault) {
+	url := promptData("Введите url для поиска ")
+	accounts := vault.FindAccountsByUrl(url)
+	if len(accounts) == 0 {
+		fmt.Println("Аккаунтов не найдено")
+	}
+	for _, account := range accounts {
+		account.Output()
+	}
+}
 
 func deleteAccount() {}
 
@@ -69,4 +66,3 @@ func promptData(prompt string) string {
 	fmt.Scanln(&result)
 	return result
 }
-

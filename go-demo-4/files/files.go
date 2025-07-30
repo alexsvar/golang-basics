@@ -5,15 +5,16 @@ import (
 	"os"
 )
 
-func ReadFile() {
-	data, err := os.ReadFile("file.txt")
+// Чтение файла
+func ReadFile(name string) ([]byte, error) {
+	data, err := os.ReadFile(name)
 	if err != nil {
-		fmt.Println(err)
-		return
+		return nil, err
 	}
-	fmt.Println(string(data))
+	return data, nil
 }
 
+// Запись файла
 func WriteFile(content []byte, name string) {
 	file, err := os.Create(name)
 	if err != nil {
@@ -23,7 +24,7 @@ func WriteFile(content []byte, name string) {
 	_, err = file.Write(content)
 	if err != nil {
 		fmt.Println(err)
-		return 
+		return
 	}
 	fmt.Println("Запись успешна")
 }

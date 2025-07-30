@@ -12,15 +12,17 @@ import (
 var letterRunes = []rune("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_!?*")
 
 type Account struct {
-	Login 		string 		`json:"login"`
-	Password 	string 		`json:"password"`
-	Url 			string 		`json:"url"`
+	Login     string    `json:"login"`
+	Password  string    `json:"password"`
+	Url       string    `json:"url"`
 	CreatedAt time.Time `json:"createdAt"`
 	UpdatedAt time.Time `json:"updatedAt"`
 }
 
-func (acc *Account) OutputPassword() {
-	fmt.Println(acc.Login, acc.Password, acc.Url)
+func (acc *Account) Output() {
+	fmt.Println(acc.Login)
+	fmt.Println(acc.Password)
+	fmt.Println(acc.Url)
 }
 
 func (acc *Account) generatePassword(n int) {
@@ -44,9 +46,9 @@ func NewAccount(login, password, urlString string) (*Account, error) {
 	newAcc := &Account{
 		CreatedAt: time.Now(),
 		UpdatedAt: time.Now(),
-		Login: login,
-		Password: password,
-		Url: urlString,
+		Login:     login,
+		Password:  password,
+		Url:       urlString,
 	}
 
 	if password == "" {
