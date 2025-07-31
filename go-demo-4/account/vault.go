@@ -1,12 +1,17 @@
 package account
 
 import (
-	"demo/app-4/files"
 	"encoding/json"
 	"fmt"
 	"strings"
 	"time"
 )
+
+// Interface Db
+type Db interface {
+	Read() ([]byte, error)
+	Write([]byte)
+}
 
 // Struct Vault
 type Vault struct {
@@ -17,11 +22,11 @@ type Vault struct {
 // Расширение type
 type VaultWithDb struct {
 	Vault
-	db files.JsonDb
+	db Db
 }
 
 // Функция-конструктор Vault
-func NewVault(db *files.JsonDb) *VaultWithDb {
+func NewVault(db Db) *VaultWithDb {
 	file, err := db.Read()
 	if err != nil {
 		return &VaultWithDb{
@@ -29,7 +34,7 @@ func NewVault(db *files.JsonDb) *VaultWithDb {
 				Accounts:  []Account{},
 				UpdatedAt: time.Now(),
 			},
-			db: *db,
+			db: db,
 		}
 	}
 	var vault Vault
@@ -41,12 +46,12 @@ func NewVault(db *files.JsonDb) *VaultWithDb {
 				Accounts:  []Account{},
 				UpdatedAt: time.Now(),
 			},
-			db: *db,
+			db: db,
 		}
 	}
 	return &VaultWithDb{
 		Vault: vault,
-		db:    *db,
+		db:    db,
 	}
 }
 

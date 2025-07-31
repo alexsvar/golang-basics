@@ -9,6 +9,7 @@ import (
 func main() {
 	fmt.Println("___МЕНЕДЖЕР ПАРОЛЕЙ___")
 	vault := account.NewVault(files.NewJsonDb("data.json"))
+	// vault := account.NewVault(cloud.NewCloudDb("https://a1x.com"))
 Menu:
 	for {
 		variant := getMenu()
