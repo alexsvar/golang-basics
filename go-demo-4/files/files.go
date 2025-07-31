@@ -5,9 +5,21 @@ import (
 	"os"
 )
 
+// JsonDB Struct
+type JsonDb struct {
+	filename string
+}
+
+// Функция-конструктор JsonDb
+func NewJsonDb(name string) *JsonDb {
+	return &JsonDb{
+		filename: name,
+	}
+}
+
 // Чтение файла
-func ReadFile(name string) ([]byte, error) {
-	data, err := os.ReadFile(name)
+func (db *JsonDb) Read() ([]byte, error) {
+	data, err := os.ReadFile(db.filename)
 	if err != nil {
 		return nil, err
 	}
@@ -15,8 +27,8 @@ func ReadFile(name string) ([]byte, error) {
 }
 
 // Запись файла
-func WriteFile(content []byte, name string) {
-	file, err := os.Create(name)
+func (db *JsonDb) Write(content []byte) {
+	file, err := os.Create(db.filename)
 	if err != nil {
 		fmt.Println(err)
 	}
