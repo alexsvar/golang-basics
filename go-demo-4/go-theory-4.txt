@@ -24,7 +24,7 @@
 // STRUCT TAGS
 // SAVING JSON
 // SLICE STRUCT
-// 
+// DEPENDANCY INJECTION
 // 
 
 
@@ -1025,3 +1025,12 @@ func (vault *Vault) ToBytes() ([]byte, error) {
 	return file, nil
 }
 ///////
+
+
+// 
+// // DEPENDANCY INJECTION
+// 
+
+// DI - внедрение зависимостей
+// Это подход, который позволяет нам создавая ту или иную структуру,
+// напрямую внедрять туда все необходимые зависимости.

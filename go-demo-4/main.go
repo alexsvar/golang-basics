@@ -2,12 +2,13 @@ package main
 
 import (
 	"demo/app-4/account"
+	"demo/app-4/files"
 	"fmt"
 )
 
 func main() {
 	fmt.Println("___МЕНЕДЖЕР ПАРОЛЕЙ___")
-	vault := account.NewVault()
+	vault := account.NewVault(files.NewJsonDb("data.json"))
 Menu:
 	for {
 		variant := getMenu()
@@ -35,7 +36,7 @@ func getMenu() int {
 	return variant
 }
 
-func createAccount(vault *account.Vault) {
+func createAccount(vault *account.VaultWithDb) {
 	login := promptData("Введите логин: ")
 	password := promptData("Введите пароль: ")
 	url := promptData("Введите URL: ")
@@ -47,7 +48,7 @@ func createAccount(vault *account.Vault) {
 	vault.AddAccount(*myAccount)
 }
 
-func findAccount(vault *account.Vault) {
+func findAccount(vault *account.VaultWithDb) {
 	url := promptData("Введите url для поиска ")
 	accounts := vault.FindAccountsByUrl(url)
 	if len(accounts) == 0 {
@@ -58,7 +59,7 @@ func findAccount(vault *account.Vault) {
 	}
 }
 
-func deleteAccount(vault *account.Vault) {
+func deleteAccount(vault *account.VaultWithDb) {
 	url := promptData("Введите url для поиска ")
 	isDeleted := vault.DeleteAccountByUrl(url)
 	if isDeleted {
