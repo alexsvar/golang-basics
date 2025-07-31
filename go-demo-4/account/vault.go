@@ -1,16 +1,26 @@
 package account
 
 import (
+	"demo/app-4/output"
 	"encoding/json"
-	"fmt"
 	"strings"
 	"time"
 )
 
+// type ByteReader
+type ByteReader interface {
+	Read() ([]byte, error)
+}
+
+// type ByteWriter
+type ByteWriter interface {
+	Write([]byte)
+}
+
 // Interface Db
 type Db interface {
-	Read() ([]byte, error)
-	Write([]byte)
+	ByteReader
+	ByteWriter
 }
 
 // Struct Vault
@@ -40,7 +50,7 @@ func NewVault(db Db) *VaultWithDb {
 	var vault Vault
 	err = json.Unmarshal(file, &vault)
 	if err != nil {
-		fmt.Println("Не удалось разобрать файл data.json")
+		output.PrintError("Не удалось разобрать файл data.json")
 		return &VaultWithDb{
 			Vault: Vault{
 				Accounts:  []Account{},
@@ -105,7 +115,7 @@ func (vault *VaultWithDb) save() {
 	vault.UpdatedAt = time.Now()
 	data, err := vault.Vault.ToBytes()
 	if err != nil {
-		fmt.Println("Не удалось преобразовать")
+		output.PrintError("Не удалось преобразовать")
 	}
 	vault.db.Write(data)
 }

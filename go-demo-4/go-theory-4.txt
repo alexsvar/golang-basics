@@ -26,6 +26,10 @@
 // SLICE STRUCT
 // DEPENDANCY INJECTION
 // INTERFACE CREATION
+// TYPE SWITCH
+// 
+//
+//
 
 
 // 
@@ -1044,5 +1048,38 @@ func (vault *Vault) ToBytes() ([]byte, error) {
 // Интерфейс - контракт, который будет нам говорить, 
 // какими методами должен обладать тот или иной struct, 
 // для того, чтобы этот интерфейс имплементировать.
-// В Go не нужно явно связывать структуру с интерфейсом,
+// В Go не нужно явно связывать структуру с интерфейсом.
+
+// Есть так же Embedded Interfaces, так же как и Embedded Struct.
+
+// type ByteReader
+type ByteReader interface {
+	Read() ([]byte, error)
+}
+
+// type ByteWriter
+type ByteWriter interface {
+	Write([]byte)
+}
+
+// type Db interface
+type Db interface {
+	ByteReader
+	ByteWriter
+}
+
+// Так же есть специальный тип - пустой интерфейс или Any type
+
+func PrintError(value interface{}) {
+	fmt.Println(value)
+}
+
+func PrintError(value any) {
+	fmt.Println(value)
+}
+
+
+// 
+// // TYPE SWITCH
+// 
 

@@ -3,10 +3,12 @@ package main
 import (
 	"demo/app-4/account"
 	"demo/app-4/files"
+	"demo/app-4/output"
 	"fmt"
 )
 
 func main() {
+	output.PrintError(1)
 	fmt.Println("___МЕНЕДЖЕР ПАРОЛЕЙ___")
 	vault := account.NewVault(files.NewJsonDb("data.json"))
 	// vault := account.NewVault(cloud.NewCloudDb("https://a1x.com"))
@@ -43,7 +45,7 @@ func createAccount(vault *account.VaultWithDb) {
 	url := promptData("Введите URL: ")
 	myAccount, err := account.NewAccount(login, password, url)
 	if err != nil {
-		fmt.Println("Неверный формат URL или Login")
+		output.PrintError("Неверный формат URL или Login")
 		return
 	}
 	vault.AddAccount(*myAccount)
@@ -66,7 +68,7 @@ func deleteAccount(vault *account.VaultWithDb) {
 	if isDeleted {
 		fmt.Println("Удалено")
 	} else {
-		fmt.Println("Не удалось найти аккаунт")
+		output.PrintError("Не удалось найти аккаунт")
 	}
 
 }
